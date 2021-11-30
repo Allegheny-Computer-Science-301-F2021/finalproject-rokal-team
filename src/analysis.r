@@ -18,6 +18,13 @@ library(psych)
 # add your code here. Be sure to leave your data file(s) in the data/ directory of this repository.
 
 # TODO
+# pick the data file
+myFile <- file.choose()
 
+# load the datafile as a CSV file
+dat <- read.table(myFile, header = TRUE, sep = ",")
+
+# view the dataset
+View(dat)
 
 # (Did you remember to add your name to this script?)
