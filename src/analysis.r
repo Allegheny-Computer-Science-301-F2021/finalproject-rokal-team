@@ -27,4 +27,14 @@ dat <- read.table(myFile, header = TRUE, sep = ",")
 # view the dataset
 View(dat)
 
+# pulling just the data for March 2021
+dat_mar2021 <- dat %>% filter(Month == "3", Year == "2021")
+View(dat_mar2021)
+
+# pulling just the data for February 2021
+dat_feb2021 <- dat %>% filter(Month == "2", Year == "2021")
+View(dat_feb2021)
+
+dat_mar2021_totals <- mutate(dat_mar2021, Provisional.Drug.Overdose.Deaths <-)
+
 # (Did you remember to add your name to this script?)
