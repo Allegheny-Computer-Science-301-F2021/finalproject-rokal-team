@@ -59,6 +59,17 @@ View(data_wash_dec2020)
 data_miss_dec2020 <- data_miss %>% filter(Month == "12", Year == "2020")
 View(data_miss_dec2020)
 
+# graphing results for each year (by state)
+## Arizona
+AZ_init <- ggplot(data = data_zona) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
+AZ_init
+## Missouri
+MO_init <- ggplot(data = data_miss) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
+MO_init
+## Washington
+WA_init <- ggplot(data = data_wash) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
+WA_init
+
 # trying to mutate the data
 dat_mar2021_totals <- mutate(dat_mar2021, Provisional.Drug.Overdose.Deaths <-)
 
