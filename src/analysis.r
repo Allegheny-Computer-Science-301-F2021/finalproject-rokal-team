@@ -17,7 +17,6 @@ library(psych)
 
 # add your code here. Be sure to leave your data file(s) in the data/ directory of this repository.
 
-# TODO
 # pick the data file
 myFile <- file.choose()
 
