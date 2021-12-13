@@ -45,7 +45,7 @@ MaricopaArizona <- ggplot(data = MaricopaData) + geom_point(aes(x=Month, y= Prov
 MaricopaArizona
 # Washington - King
 KingData <- filter(dataOurStatestwen, COUNTYNAME == "King")
-KingWashington <- ggplot(data = KingData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("King County, Arizona")
+KingWashington <- ggplot(data = KingData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("King County, Washington")
 KingWashington
 # Missouri - St. Louis
 StLouisData <- filter(dataOurStatestwen, COUNTYNAME == "St. Louis")
@@ -60,7 +60,7 @@ ApacheArizona <- ggplot(data = ApacheData) + geom_point(aes(x=Month, y= Provisio
 ApacheArizona
 # Washington - Mason (pop. 65,726)
 MasonData <- filter(dataOurStatestwen, COUNTYNAME == "Mason")
-MasonWashington <- ggplot(data = MasonData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Mason County, Arizona")
+MasonWashington <- ggplot(data = MasonData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Mason County, Washington")
 MasonWashington
 # Missouri - St. Francois (pop. 66,922)
 StFrancoisData <- filter(dataOurStatestwen, COUNTYNAME == "St. Francois")
