@@ -11,6 +11,8 @@ rm(list = ls()) # remove variables stored in memory.
 # add your libraries here
 
 library(tidyverse)
+library(ggplot2)
+library(plotly)
 
 # install.packages("psych")
 library(psych)
@@ -29,47 +31,40 @@ View(dat)
 # pulling relevant variables
 data <- select(dat, Year, Month, STATE_NAME, COUNTYNAME, Provisional.Drug.Overdose.Deaths)
 
-# filtering data for the states we need
-data_zona <- filter(data, STATE_NAME == "Arizona")
-data_wash <- filter(data, STATE_NAME == "Washington")
-data_miss <- filter(data, STATE_NAME == "Missouri")
 
-# pulling the data for March 2020
-data_zona_mar2020 <- data_zona %>% filter(Month == "3", Year == "2020")
-View(data_zona_mar2020)
-data_wash_mar2020 <- data_wash %>% filter(Month == "3", Year == "2020")
-View(data_wash_mar2020)
-data_miss_mar2020 <- data_miss %>% filter(Month == "3", Year == "2020")
-View(data_miss_mar2020)
+# getting all of the data for the states together
+dataOurStates <- data %>% filter(STATE_NAME == "Arizona" | STATE_NAME == "Missouri" | STATE_NAME == "Washington")
+dataOurStatestwen <- filter(dataOurStates, Year == 2020)
+View(dataOurStatestwen)
 
-# pulling the data for August 2020
-data_zona_aug2020 <- data_zona %>% filter(Month == "8", Year == "2020")
-View(data_zona_aug2020)
-data_wash_aug2020 <- data_wash %>% filter(Month == "8", Year == "2020")
-View(data_wash_aug2020)
-data_miss_aug2020 <- data_miss %>% filter(Month == "8", Year == "2020")
-View(data_miss_aug2020)
 
-# pulling data for December 2020
-data_zona_dec2020 <- data_zona %>% filter(Month == "12", Year == "2020")
-View(data_zona_dec2020)
-data_wash_dec2020 <- data_wash %>% filter(Month == "12", Year == "2020")
-View(data_wash_dec2020)
-data_miss_dec2020 <- data_miss %>% filter(Month == "12", Year == "2020")
-View(data_miss_dec2020)
+## Graphing the Drug Deaths of the largest county by population
+# Arizona - Maricopa
+MaricopaData <- filter(dataOurStatestwen, COUNTYNAME == "Maricopa")
+MaricopaArizona <- ggplot(data = MaricopaData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Maricopa County, Arizona")
+MaricopaArizona
+# Washington - King
+KingData <- filter(dataOurStatestwen, COUNTYNAME == "King")
+KingWashington <- ggplot(data = KingData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("King County, Arizona")
+KingWashington
+# Missouri - St. Louis
+StLouisData <- filter(dataOurStatestwen, COUNTYNAME == "St. Louis")
+StLouisMissouri <- ggplot(data = StLouisData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("St. Louis County, Missouri")
+StLouisMissouri
 
-# graphing results for each year (by state)
-## Arizona
-AZ_init <- ggplot(data = data_zona) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
-AZ_init
-## Missouri
-MO_init <- ggplot(data = data_miss) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
-MO_init
-## Washington
-WA_init <- ggplot(data = data_wash) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths, color = COUNTYNAME))
-WA_init
 
-# trying to mutate the data
-dat_mar2021_totals <- mutate(dat_mar2021, Provisional.Drug.Overdose.Deaths <-)
+## Graphing Counties with common population size (65,700 - 67,000)
+# Arizona - Apache (pop. 66,021)
+ApacheData <- filter(dataOurStatestwen, COUNTYNAME == "Apache")
+ApacheArizona <- ggplot(data = ApacheData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Apache County, Arizona")
+ApacheArizona
+# Washington - Mason (pop. 65,726)
+MasonData <- filter(dataOurStatestwen, COUNTYNAME == "Mason")
+MasonWashington <- ggplot(data = MasonData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Mason County, Arizona")
+MasonWashington
+# Missouri - St. Francois (pop. 66,922)
+StFrancoisData <- filter(dataOurStatestwen, COUNTYNAME == "St. Francois")
+StFrancoisMissouri <- ggplot(data = StFrancoisData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("St. Francois County, Missouri")
+StFrancoisMissouri
 
 # (Did you remember to add your name to this script?)
