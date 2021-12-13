@@ -53,7 +53,7 @@ StLouisMissouri <- ggplot(data = StLouisData) + geom_point(aes(x=Month, y= Provi
 StLouisMissouri
 
 
-## Graphing Counties with common population size (65,700 - 67,000)
+## Graphing Counties with similar population size (65,700 - 67,000)
 # Arizona - Apache (pop. 66,021)
 ApacheData <- filter(dataOurStatestwen, COUNTYNAME == "Apache")
 ApacheArizona <- ggplot(data = ApacheData) + geom_point(aes(x=Month, y= Provisional.Drug.Overdose.Deaths)) + ggtitle("Apache County, Arizona")
